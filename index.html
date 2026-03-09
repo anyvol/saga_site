@@ -11,7 +11,7 @@
   <header class="header">
     <div class="header-inner">
       <div class="logo">
-        <img src="logo.svg" alt="SAGA Технологии" class="logo-image" />
+        <img src="assets/logo.svg" alt="SAGA Технологии" class="logo-image" />
       </div>
       <button class="nav-toggle" aria-label="Открыть меню">
         <span></span><span></span>
@@ -27,7 +27,7 @@
 
   <main>
     <!-- HERO -->
-    <section class="section hero" id="top">
+    <section class="section hero container" id="top">
       <div class="hero-content">
         <p class="hero-kicker">Российские решения самообслуживания</p>
         <h1>Наше оборудование работает по всей России&nbsp;24/7</h1>
@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <!-- Сюда подставьте крупное фото с главной страницы текущего сайта -->
+        <!-- Сюда фото -->
         <div class="hero-image-placeholder">Фото оборудования SAGA</div>
       </div>
     </section>
@@ -99,7 +99,7 @@
         </p>
 
         <!-- Банкоматы -->
-        <article class="product">
+        <article class="product" data-product="atm">
           <div class="product-media">
             <!-- Фото банкомата с текущего сайта -->
             <div class="product-image-placeholder">Фото банкомата</div>
@@ -121,7 +121,7 @@
         </article>
 
         <!-- Системы управления очередью -->
-        <article class="product">
+        <article class="product" data-product="queue">
           <div class="product-media">
             <!-- Фото терминала/стойки очереди -->
             <div class="product-image-placeholder">Система управления очередью</div>
@@ -143,7 +143,7 @@
         </article>
 
         <!-- Кассы самообслуживания -->
-        <article class="product">
+        <article class="product" data-product="selfcheckout">
           <div class="product-media">
             <!-- Фото кассы самообслуживания -->
             <div class="product-image-placeholder">Касса самообслуживания</div>
@@ -197,39 +197,6 @@
       </div>
     </section>
 
-    <!-- КОРОТКИЙ БЛОК НОВОСТЕЙ -->
-    <section class="section section-alt">
-      <div class="container">
-        <h2>Актуальные новости</h2>
-        <p class="section-intro">
-          На основном сайте вы найдёте подробные новости, отраслевую аналитику и
-          кейсы внедрения решений SAGA.
-        </p>
-
-        <div class="news-list">
-          <article class="news-item">
-            <h3>Учебные классы SAGA представлены частным школам</h3>
-            <p>Корпорация САГА стала партнёром конференции «100 частных школ России».</p>
-            <a href="https://sagacorporation.com/company/news/10953/" target="_blank" rel="noopener" class="link">
-              Читать на основном сайте →
-            </a>
-          </article>
-
-          <article class="news-item">
-            <h3>САГА стала резидентом ОЭЗ «Технополис Москва»</h3>
-            <p>Новые производственные мощности размещаются на площадке «Печатники».</p>
-            <a href="https://sagacorporation.com/company/news/10918/" target="_blank" rel="noopener" class="link">
-              Подробнее о событии →
-            </a>
-          </article>
-        </div>
-
-        <a href="https://sagacorporation.com/company/news/" target="_blank" rel="noopener" class="btn ghost full">
-          Все новости SAGA
-        </a>
-      </div>
-    </section>
-
     <!-- КОНТАКТЫ -->
     <section class="section" id="contacts">
       <div class="container">
@@ -254,21 +221,73 @@
 
         <div class="addresses">
           <h3>Офис и производство</h3>
-          <ul>
-            <li>Москва, Волгоградский проспект, 42, к. 2</li>
+            <li>Офис: Москва, Уральская, 21</li>
+            <li>Производство: Москва, Волгоградский проспект, 42, к. 5</li>
             <li>Производство: Москва, Амурская, 9/6</li>
             <li>Производство: Москва, Монтажная, 2А, стр. 8</li>
-            <li>Офис: Москва, Уральская, 2</li>
           </ul>
         </div>
 
         <div class="contacts-actions">
-          <a href="tel:+78002222197" class="btn primary">Позвонить в SAGA</a>
-          <a href="mailto:info@saga-tech.ru" class="btn ghost">Написать письмо</a>
+          <a
+            href="tel:+78002222192"
+            class="contact-icon"
+            aria-label="Позвонить 8 800 2222 192"
+          >
+            <img src="assets/телефон-logo.png" alt="" />
+          </a>
+          <a
+            href="mailto:info@saga-tech.ru"
+            class="contact-icon"
+            aria-label="Написать на info@saga-tech.ru"
+          >
+            <img src="assets/почта_logo.png" alt="" />
+          </a>
+          <a
+            href="https://t.me/SAGACorporation"
+            target="_blank"
+            rel="noopener"
+            class="contact-icon"
+            aria-label="Открыть Telegram-канал SAGA"
+          >
+            <img src="assets/tg_Logo.png" alt="" />
+          </a>
+          <a
+            href="https://max.ru/id7718589473_biz"
+            target="_blank"
+            rel="noopener"
+            class="contact-icon"
+            aria-label="Открыть SAGA в MAX"
+          >
+            <img src="assets/Max_logo_2025.png" alt="" />
+          </a>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Модальное окно для устройств -->
+  <div class="modal" id="product-modal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-label="Подробности устройства">
+      <button class="modal-close" type="button" aria-label="Закрыть">
+        ×
+      </button>
+      <div class="modal-body">
+        <div class="modal-image-wrap">
+          <img src="" alt="" class="modal-image" />
+        </div>
+        <div class="modal-text">
+          <h3 class="modal-title"></h3>
+          <p class="modal-lead"></p>
+          <ul class="modal-list"></ul>
+          <a href="#" target="_blank" rel="noopener" class="link modal-link">
+            Подробнее на основном сайте →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="container footer-inner">
