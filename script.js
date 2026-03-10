@@ -142,19 +142,9 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
       slides: [
         {
-          image: "assets/ssc/ssc_21_front_1.jpg",
-          title: "Кассы самообслуживания SAGA",
-          subtitle: "Диагональ 19″",
-        },
-        {
           image: "assets/ssc/ssc_21_front_2.jpg",
           title: "Кассы самообслуживания SAGA",
           subtitle: "Диагональ 21″",
-        },
-        {
-          image: "assets/ssc/ssc_21_front_3.jpg",
-          title: "Кассы самообслуживания SAGA",
-          subtitle: "Диагональ 27″",
         },
       ],
       link: "https://sagacorporation.com/products/kassy-samoobsluzhivaniya/",

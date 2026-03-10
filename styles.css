@@ -311,9 +311,9 @@ p {
 .product-carousel {
   position: relative;
   border-radius: 18px;
-  border: 1px solid var(--border);
-  overflow: hidden;
-  background: linear-gradient(135deg, #f1f1f6, #dedee8);
+  border: none;
+  overflow: visible;
+  background: transparent;
 }
 
 .product-carousel-track {
@@ -326,6 +326,8 @@ p {
 .product-carousel-slide {
   min-width: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-carousel-slide img {
@@ -335,21 +337,19 @@ p {
 }
 
 .product-carousel-overlay {
-  position: absolute;
-  inset: 0;
+  position: relative;
   display: flex;
   align-items: flex-start;
-  padding: 16px 18px;
+  padding: 10px 0 0;
   pointer-events: none;
 }
 
 .product-carousel-overlay-inner {
-  max-width: 72%;
-  background: rgba(0, 0, 0, 0.6);
-  color: #ffffff;
+  max-width: 100%;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text);
   padding: 10px 14px;
   border-radius: 12px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.35s ease-out 0.2s, transform 0.35s ease-out 0.2s;
@@ -359,7 +359,7 @@ p {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  opacity: 0.9;
+  opacity: 0.7;
   margin-bottom: 4px;
 }
 
