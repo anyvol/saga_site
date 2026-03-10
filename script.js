@@ -31,6 +31,25 @@ document.addEventListener("DOMContentLoaded", () => {
     ? lightbox.querySelector(".image-lightbox-backdrop")
     : null;
 
+  const contentModal = document.getElementById("content-modal");
+  const contentModalBackdrop = contentModal
+    ? contentModal.querySelector(".modal-backdrop")
+    : null;
+  const contentModalCloseButtons = contentModal
+    ? contentModal.querySelectorAll(
+        ".content-modal-close, .content-modal-close-bottom"
+      )
+    : null;
+  const contentModalKicker = contentModal
+    ? contentModal.querySelector("#content-modal-kicker")
+    : null;
+  const contentModalTitle = contentModal
+    ? contentModal.querySelector("#content-modal-title")
+    : null;
+  const contentModalText = contentModal
+    ? contentModal.querySelector("#content-modal-text")
+    : null;
+
   const CAROUSEL_INTERVAL = 5000;
   const PRODUCT_INTERVAL = 4500;
   const SWIPE_THRESHOLD = 40;
@@ -68,6 +87,83 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  const contentPages = {
+    company: {
+      kicker: "О корпорации",
+      title: "АО «САГА Технологии»",
+      body: `
+        <p>Здесь будет динамический контент о корпорации. Этот блок можно позже наполнить реальными данными о компании, истории развития, производственной базе и ключевых направлениях деятельности.</p>
+        <p>Пока используется аккуратная заглушка, чтобы проверить механику открытия окна из футера и из секции «О компании».</p>
+      `
+    },
+    privacy: {
+      kicker: "Документы",
+      title: "Политика конфиденциальности",
+      body: `
+        <p>Здесь будет размещён текст политики конфиденциальности или краткая карточка с основными положениями и ссылкой на полный документ.</p>
+        <p>Пока используется временная заглушка для проверки работы динамического окна.</p>
+      `
+    }
+  };
+
+  function openContentModal(key) {
+    if (!contentModal || !contentPages[key]) return;
+
+    const page = contentPages[key];
+
+    if (contentModalKicker) contentModalKicker.textContent = page.kicker || "";
+    if (contentModalTitle) contentModalTitle.textContent = page.title || "";
+    if (contentModalText) contentModalText.innerHTML = page.body || "";
+
+    contentModal.classList.add("is-open");
+    contentModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeContentModal() {
+    if (!contentModal) return;
+
+    contentModal.classList.remove("is-open");
+    contentModal.setAttribute("aria-hidden", "true");
+
+    if (contentModalKicker) contentModalKicker.textContent = "";
+    if (contentModalTitle) contentModalTitle.textContent = "";
+    if (contentModalText) contentModalText.innerHTML = "";
+
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll("[data-open-content]").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      const key = el.getAttribute("data-open-content");
+      openContentModal(key);
+    });
+  });
+
+  document.querySelectorAll("[data-scroll-to]").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = el.getAttribute("data-scroll-to");
+      const target = document.getElementById(id);
+
+      if (!target) return;
+
+      const y = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    });
+  });
+
+  if (contentModalBackdrop) {
+    contentModalBackdrop.addEventListener("click", closeContentModal);
+  }
+
+  if (contentModalCloseButtons) {
+    contentModalCloseButtons.forEach((btn) => {
+      btn.addEventListener("click", closeContentModal);
+    });
+  }
 
   const productConfig = {
     atm: {
@@ -242,6 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lightboxImg.src = src;
         lightboxImg.alt = title || "";
         lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
       });
 
@@ -402,6 +499,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape") {
       if (lightbox && lightbox.classList.contains("is-open")) {
         closeLightbox();
+        return;
+      }
+
+      if (contentModal && contentModal.classList.contains("is-open")) {
+        closeContentModal();
         return;
       }
 
