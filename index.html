@@ -270,12 +270,17 @@
   <div class="modal" id="product-modal" aria-hidden="true">
     <div class="modal-backdrop"></div>
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-label="Подробности устройства">
-      <button class="modal-close" type="button" aria-label="Закрыть">
+      <button class="modal-close modal-close-top" type="button" aria-label="Закрыть">
         ×
       </button>
       <div class="modal-body">
         <div class="modal-image-wrap">
-          <img src="" alt="" class="modal-image" />
+          <div class="modal-carousel" data-carousel>
+            <div class="modal-carousel-track" data-carousel-track></div>
+            <div class="modal-carousel-progress">
+              <div class="modal-carousel-progress-bar" data-carousel-progress></div>
+            </div>
+          </div>
         </div>
         <div class="modal-text">
           <h3 class="modal-title"></h3>
@@ -284,8 +289,21 @@
           <a href="#" target="_blank" rel="noopener" class="link modal-link">
             Подробнее на основном сайте →
           </a>
+          <div class="modal-actions">
+            <a
+              href="#"
+              class="btn primary full modal-booklet"
+              target="_blank"
+              rel="noopener"
+            >
+              Скачать буклет (PDF)
+            </a>
+          </div>
         </div>
       </div>
+      <button class="modal-close modal-close-bottom" type="button" aria-label="Закрыть">
+        Закрыть
+      </button>
     </div>
   </div>
 
