@@ -38,8 +38,8 @@
         </p>
         <div class="hero-actions">
           <a href="#products" class="btn primary">Смотреть устройства</a>
-          <a href="https://sagacorporation.com/" class="btn ghost" target="_blank" rel="noopener">
-            Перейти на основной сайт
+          <a href="#contacts" class="btn ghost">
+            Перейти к контактам
           </a>
         </div>
       </div>
@@ -86,38 +86,67 @@
             </div>
           </div>
         </div>
+
+        <div class="about-actions">
+          <button class="btn ghost" type="button" id="about-more-btn">
+            Подробнее
+          </button>
+        </div>
       </div>
     </section>
 
     <!-- УСТРОЙСТВА -->
     <section class="section section-alt" id="products">
       <div class="container">
-        <h2>Наши ключевые устройства</h2>
+        <h2>Продукты</h2>
         <p class="section-intro">
-          Разрабатываем и производим решения самообслуживания для финансового
-          сектора, розничной торговли и государственных сервисов.
+          Листайте карточки, открывайте подробности и изучайте продуктовые решения
+          в интерактивном режиме.
         </p>
-
-        <!-- Банкоматы -->
+    
         <article class="product" data-product="atm">
+          <div class="product-copy">
+            <h3>Банкоматы SAGA</h3>
+            <p>
+              Российские банкоматы с современным дизайном и поддержкой
+              рециркуляции наличных.
+            </p>
+            <ul>
+              <li>Экраны 19″, 27″ и 32″.</li>
+              <li>Функция рециркуляции для оптимизации инкассации.</li>
+              <li>Успешное прохождение испытаний Банка России.</li>
+              <li>Включены в реестр российской промышленной продукции.</li>
+            </ul>
+    
+            <div class="product-actions">
+              <button
+                class="btn primary"
+                type="button"
+                data-open-product="atm"
+              >
+                Подробнее
+              </button>
+            </div>
+          </div>
+    
           <div class="product-media">
             <div class="product-carousel" data-product-carousel="atm">
               <button
                 class="carousel-arrow carousel-arrow-prev"
                 type="button"
-                aria-label="Предыдущее фото банкомата"
                 data-carousel-control="prev"
+                aria-label="Предыдущий слайд"
               ></button>
+    
+              <div class="product-carousel-track" data-product-carousel-track></div>
+    
               <button
                 class="carousel-arrow carousel-arrow-next"
                 type="button"
-                aria-label="Следующее фото банкомата"
                 data-carousel-control="next"
+                aria-label="Следующий слайд"
               ></button>
-              <div
-                class="product-carousel-track"
-                data-product-carousel-track
-              ></div>
+    
               <div class="product-carousel-progress">
                 <div
                   class="product-carousel-progress-bar"
@@ -126,54 +155,51 @@
               </div>
             </div>
           </div>
-          <div class="product-content">
-            <h3>Банкоматы SAGA</h3>
+        </article>
+    
+        <article class="product" data-product="queue">
+          <div class="product-copy">
+            <h3>Системы управления очередью</h3>
+            <p>
+              Комплексные решения для организации электронных очередей в офисах,
+              МФЦ, банках и клиниках.
+            </p>
             <ul>
-              <li>Экраны 19″, 27″ и 32″, современный дизайн корпуса.</li>
-              <li>Функция рециркуляции наличных.</li>
-              <li>Успешное прохождение испытаний Банка России.</li>
-              <li>Включены в реестр российской промышленной продукции.</li>
+              <li>Гибкая настройка сценариев обслуживания и приоритетов.</li>
+              <li>Понятный интерфейс для клиентов и персонала.</li>
+              <li>Интеграция с информационными и платёжными сервисами.</li>
+              <li>Статистика и аналитика по загруженности точек обслуживания.</li>
             </ul>
+    
             <div class="product-actions">
-              <a
-                href="https://sagacorporation.com/products/bankomaty/"
-                target="_blank"
-                rel="noopener"
+              <button
                 class="btn primary"
+                type="button"
+                data-open-product="queue"
               >
                 Подробнее
-              </a>
-              <a
-                href="assets/booklets/atm_booklet.pdf"
-                class="btn ghost"
-                download
-              >
-                Скачать буклет (PDF)
-              </a>
+              </button>
             </div>
           </div>
-        </article>
-
-        <!-- Системы управления очередью -->
-        <article class="product" data-product="queue">
+    
           <div class="product-media">
             <div class="product-carousel" data-product-carousel="queue">
               <button
                 class="carousel-arrow carousel-arrow-prev"
                 type="button"
-                aria-label="Предыдущее фото системы управления очередью"
                 data-carousel-control="prev"
+                aria-label="Предыдущий слайд"
               ></button>
+    
+              <div class="product-carousel-track" data-product-carousel-track></div>
+    
               <button
                 class="carousel-arrow carousel-arrow-next"
                 type="button"
-                aria-label="Следующее фото системы управления очередью"
                 data-carousel-control="next"
+                aria-label="Следующий слайд"
               ></button>
-              <div
-                class="product-carousel-track"
-                data-product-carousel-track
-              ></div>
+    
               <div class="product-carousel-progress">
                 <div
                   class="product-carousel-progress-bar"
@@ -182,55 +208,51 @@
               </div>
             </div>
           </div>
-          <div class="product-content">
-            <h3>Системы управления очередью</h3>
+        </article>
+    
+        <article class="product" data-product="selfcheckout">
+          <div class="product-copy">
+            <h3>Кассы самообслуживания SAGA</h3>
+            <p>
+              Линейка касс самообслуживания для розничной торговли и АЗС,
+              сокращающая время обслуживания клиентов.
+            </p>
             <ul>
-              <li>Удобный интерфейс для клиентов и персонала.</li>
-              <li>Гибкая настройка сценариев обслуживания.</li>
-              <li>Интеграция с информационными и платёжными сервисами.</li>
-              <li>Стабильная работа в высоконагруженных зонах.</li>
-              <li>Включены в реестр российской промышленной продукции.</li>
+              <li>Поддержка различных сценариев оплаты и скидок.</li>
+              <li>Интеграция с существующими POS и учётными системами.</li>
+              <li>Удобный интерфейс для покупателей и персонала.</li>
+              <li>Увеличение пропускной способности торговых точек.</li>
             </ul>
+    
             <div class="product-actions">
-              <a
-                href="https://sagacorporation.com/solutions/elektronnaya-ochered/"
-                target="_blank"
-                rel="noopener"
+              <button
                 class="btn primary"
+                type="button"
+                data-open-product="selfcheckout"
               >
                 Подробнее
-              </a>
-              <a
-                href="assets/booklets/qms_booklet.pdf"
-                class="btn ghost"
-                download
-              >
-                Скачать буклет (PDF)
-              </a>
+              </button>
             </div>
           </div>
-        </article>
-
-        <!-- Кассы самообслуживания -->
-        <article class="product" data-product="selfcheckout">
+    
           <div class="product-media">
             <div class="product-carousel" data-product-carousel="selfcheckout">
               <button
                 class="carousel-arrow carousel-arrow-prev"
                 type="button"
-                aria-label="Предыдущее фото кассы самообслуживания"
                 data-carousel-control="prev"
+                aria-label="Предыдущий слайд"
               ></button>
+    
+              <div class="product-carousel-track" data-product-carousel-track></div>
+    
               <button
                 class="carousel-arrow carousel-arrow-next"
                 type="button"
-                aria-label="Следующее фото кассы самообслуживания"
                 data-carousel-control="next"
+                aria-label="Следующий слайд"
               ></button>
-              <div
-                class="product-carousel-track"
-                data-product-carousel-track
-              ></div>
+    
               <div class="product-carousel-progress">
                 <div
                   class="product-carousel-progress-bar"
@@ -239,36 +261,69 @@
               </div>
             </div>
           </div>
-          <div class="product-content">
-            <h3>Кассы самообслуживания</h3>
-            <ul>
-              <li>Автоматизация торговых точек разного масштаба.</li>
-              <li>Безопасная оплата и понятный интерфейс покупателя.</li>
-              <li>Увеличение пропускной способности и скорости обслуживания.</li>
-              <li>Возможность интеграции с существующими ИТ‑системами.</li>
-              <li>Включены в реестр российской промышленной продукции.</li>
-            </ul>
-            <div class="product-actions">
-              <a
-                href="https://sagacorporation.com/products/kassy-samoobsluzhivaniya/"
-                target="_blank"
-                rel="noopener"
-                class="btn primary"
-              >
-                Подробнее
-              </a>
-              <a
-                href="assets/booklets/ssc_booklet.pdf"
-                class="btn ghost"
-                download
-              >
-                Скачать буклет (PDF)
-              </a>
-            </div>
-          </div>
         </article>
       </div>
     </section>
+    
+    <div class="modal" id="product-modal" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+    
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+        <button class="modal-close modal-close-top" type="button" aria-label="Закрыть">
+          ×
+        </button>
+    
+        <div class="modal-body">
+          <div class="modal-image-wrap">
+            <div class="modal-carousel" data-carousel>
+              <button
+                class="carousel-arrow carousel-arrow-prev"
+                type="button"
+                data-carousel-prev
+                aria-label="Предыдущий слайд"
+              ></button>
+    
+              <div class="modal-carousel-track" data-carousel-track></div>
+    
+              <button
+                class="carousel-arrow carousel-arrow-next"
+                type="button"
+                data-carousel-next
+                aria-label="Следующий слайд"
+              ></button>
+    
+              <div class="modal-carousel-progress">
+                <div class="modal-carousel-progress-bar" data-carousel-progress></div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="modal-text">
+            <h3 class="modal-title" id="product-modal-title"></h3>
+            <p class="modal-lead"></p>
+            <ul class="modal-list"></ul>
+    
+            <div class="modal-actions">
+              <a class="btn primary modal-link" href="#" target="_blank" rel="noopener">
+                На сайт продукта
+              </a>
+              <a class="btn ghost modal-booklet" href="#" target="_blank" rel="noopener">
+                Скачать буклет
+              </a>
+            </div>
+    
+            <button class="modal-close modal-close-bottom" type="button">
+              Закрыть
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="image-lightbox" id="image-lightbox" aria-hidden="true">
+      <div class="image-lightbox-backdrop"></div>
+      <img class="image-lightbox-img" src="" alt="" />
+    </div>
 
     <!-- МИССИЯ И ЦИФРЫ -->
     <section class="section" id="mission">
@@ -305,78 +360,122 @@
     <section class="section" id="contacts">
       <div class="container">
         <h2>Контакты</h2>
+        <p class="section-intro">
+          Свяжитесь с нами удобным способом: по телефону, почте или через социальные
+          площадки компании.
+        </p>
 
-        <div class="contacts-grid">
-          <div>
+        <div class="contacts-grid contacts-layout">
+          <article class="contact-card">
             <h3>Телефоны</h3>
-            <p>
-              <a href="tel:+78002222197">8 800 222-21-97</a><br />
-              <a href="tel:+74959871121">+7 495 987-11-21</a>
-            </p>
-          </div>
-          <div>
+            <ul class="contact-list">
+              <li>
+                <span class="contact-label">Бесплатно по России</span>
+                <a class="contact-link-main" href="tel:+78002222197">8 800 222-21-97</a>
+              </li>
+              <li>
+                <span class="contact-label">Москва</span>
+                <a class="contact-link-main" href="tel:+74959871121">+7 495 987-11-21</a>
+              </li>
+            </ul>
+          </article>
+
+          <article class="contact-card">
             <h3>Почта</h3>
-            <p>
-              Общие вопросы: <a href="mailto:info@saga-tech.ru">info@saga-tech.ru</a><br />
-              Для СМИ: <a href="mailto:press@sagacorporation.com">press@sagacorporation.com</a>
+            <ul class="contact-list">
+              <li>
+                <span class="contact-label">Общие вопросы</span>
+                <a class="contact-link-main" href="mailto:info@saga-tech.ru">info@saga-tech.ru</a>
+              </li>
+              <li>
+                <span class="contact-label">Для СМИ</span>
+                <a class="contact-link-main" href="mailto:press@sagacorporation.com">
+                  press@sagacorporation.com
+                </a>
+              </li>
+            </ul>
+          </article>
+
+          <article class="contact-card contact-card-wide">
+            <h3>Офис и производство</h3>
+            <ul class="contact-list address-list">
+              <li>
+                <span class="contact-label">Офис</span>
+                <span class="contact-text">Москва, Уральская, 21</span>
+              </li>
+              <li>
+                <span class="contact-label">Производство</span>
+                <span class="contact-text">Москва, Волгоградский проспект, 42, к. 5</span>
+              </li>
+              <li>
+                <span class="contact-label">Производство</span>
+                <span class="contact-text">Москва, Амурская, 9/6</span>
+              </li>
+              <li>
+                <span class="contact-label">Производство</span>
+                <span class="contact-text">Москва, Монтажная, 2А, стр. 8</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="contact-card contact-card-wide">
+            <h3>Быстрые действия</h3>
+            <p class="contact-note">
+              Выберите удобный канал, чтобы позвонить, написать или перейти на официальные страницы компании.
             </p>
-          </div>
-        </div>
 
-        <div class="addresses">
-          <h3>Офис и производство</h3>
-            <li>Офис: Москва, Уральская, 21</li>
-            <li>Производство: Москва, Волгоградский проспект, 42, к. 5</li>
-            <li>Производство: Москва, Амурская, 9/6</li>
-            <li>Производство: Москва, Монтажная, 2А, стр. 8</li>
-          </ul>
-        </div>
+            <div class="contacts-actions contacts-actions-grid">
+              <a
+                href="tel:+78002222197"
+                class="contact-icon"
+                aria-label="Позвонить 8 800 222-21-97"
+              >
+                <img src="assets/logos/телефон-logo.png" alt="" />
+              </a>
 
-        <div class="contacts-actions">
-          <a
-            href="tel:+78002222192"
-            class="contact-icon"
-            aria-label="Позвонить 8 800 2222 192"
-          >
-            <img src="assets/logos/телефон-logo.png" alt="" />
-          </a>
-          <a
-            href="mailto:info@saga-tech.ru"
-            class="contact-icon"
-            aria-label="Написать на info@saga-tech.ru"
-          >
-            <img src="assets/logos/почта_logo.png" alt="" />
-          </a>
-          <a
-            href="https://t.me/SAGACorporation"
-            target="_blank"
-            rel="noopener"
-            class="contact-icon"
-            aria-label="Открыть Telegram-канал SAGA"
-          >
-            <img src="assets/logos/tg_logo.png" alt="" />
-          </a>
-          <a
-            href="https://max.ru/id7718589473_biz"
-            target="_blank"
-            rel="noopener"
-            class="contact-icon"
-            aria-label="Открыть SAGA в MAX"
-          >
-            <img src="assets/logos/Max_logo_2025.png" alt="" />
-          </a>
-          <a
-          href="https://vk.com/saga_tech"
-          target="_blank"
-          rel="noopener"
-          class="contact-icon"
-          aria-label="Открыть SAGA в MAX"
-        >
-          <img src="assets/logos/VK Logo.png" alt="" />
-        </a>
+              <a
+                href="mailto:info@saga-tech.ru"
+                class="contact-icon"
+                aria-label="Написать на info@saga-tech.ru"
+              >
+                <img src="assets/logos/почта_logo.png" alt="" />
+              </a>
+
+              <a
+                href="https://t.me/SAGACorporation"
+                target="_blank"
+                rel="noopener"
+                class="contact-icon"
+                aria-label="Открыть Telegram-канал SAGA"
+              >
+                <img src="assets/logos/tg_logo.png" alt="" />
+              </a>
+
+              <a
+                href="https://max.ru/id7718589473_biz"
+                target="_blank"
+                rel="noopener"
+                class="contact-icon"
+                aria-label="Открыть SAGA в MAX"
+              >
+                <img src="assets/logos/Max_logo_2025.png" alt="" />
+              </a>
+
+              <a
+                href="https://vk.com/saga_tech"
+                target="_blank"
+                rel="noopener"
+                class="contact-icon"
+                aria-label="Открыть SAGA во ВКонтакте"
+              >
+                <img src="assets/logos/VK Logo.png" alt="" />
+              </a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- Модальное окно для устройств -->

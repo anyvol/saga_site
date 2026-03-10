@@ -2,9 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".header");
   const toggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelectorAll(".nav a");
-  const products = document.querySelectorAll(".product");
+
   const modal = document.getElementById("product-modal");
-  const modalDialog = modal ? modal.querySelector(".modal-dialog") : null;
   const modalCloseButtons = modal
     ? modal.querySelectorAll(".modal-close")
     : null;
@@ -14,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalList = modal ? modal.querySelector(".modal-list") : null;
   const modalLink = modal ? modal.querySelector(".modal-link") : null;
   const modalBooklet = modal ? modal.querySelector(".modal-booklet") : null;
-  const carousel = modal ? modal.querySelector("[data-carousel]") : null;
+
   const carouselTrack = modal
     ? modal.querySelector("[data-carousel-track]")
     : null;
@@ -23,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     : null;
   const carouselPrev = modal ? modal.querySelector("[data-carousel-prev]") : null;
   const carouselNext = modal ? modal.querySelector("[data-carousel-next]") : null;
+
   const lightbox = document.getElementById("image-lightbox");
   const lightboxImg = lightbox
     ? lightbox.querySelector(".image-lightbox-img")
@@ -32,7 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
     : null;
 
   const CAROUSEL_INTERVAL = 5000;
+  const PRODUCT_INTERVAL = 4500;
   const SWIPE_THRESHOLD = 40;
+
   let carouselTimer = null;
   let carouselIndex = 0;
   let carouselImages = [];
@@ -49,14 +51,17 @@ document.addEventListener("DOMContentLoaded", () => {
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
       const href = link.getAttribute("href");
+
       if (href && href.startsWith("#")) {
         e.preventDefault();
+
         const target = document.querySelector(href);
+
         if (target) {
-          const y =
-            target.getBoundingClientRect().top + window.scrollY - 72;
+          const y = target.getBoundingClientRect().top + window.scrollY - 72;
           window.scrollTo({ top: y, behavior: "smooth" });
         }
+
         if (header) {
           header.classList.remove("nav-open");
         }
@@ -73,27 +78,27 @@ document.addEventListener("DOMContentLoaded", () => {
         "Экраны 19″, 27″ и 32″, удобный интерфейс клиента.",
         "Функция рециркуляции для оптимизации инкассации.",
         "Успешное прохождение испытаний Банка России.",
-        "Включены в реестр российской промышленной продукции.",
+        "Включены в реестр российской промышленной продукции."
       ],
       slides: [
         {
           image: "assets/atms/saga_atm_19_front.jpg",
           title: "Банкоматы SAGA",
-          subtitle: "Диагональ 19″",
+          subtitle: "Диагональ 19″"
         },
         {
           image: "assets/atms/saga_atm_27_front.jpg",
           title: "Банкоматы SAGA",
-          subtitle: "Диагональ 27″",
+          subtitle: "Диагональ 27″"
         },
         {
           image: "assets/atms/saga_atm_32_front.jpg",
           title: "Банкоматы SAGA",
-          subtitle: "Диагональ 32″",
-        },
+          subtitle: "Диагональ 32″"
+        }
       ],
       link: "https://sagacorporation.com/products/bankomaty/",
-      booklet: "assets/booklets/atm_booklet.pdf",
+      booklet: "assets/booklets/atm_booklet.pdf"
     },
     queue: {
       title: "Системы управления очередью",
@@ -103,32 +108,42 @@ document.addEventListener("DOMContentLoaded", () => {
         "Гибкая настройка сценариев обслуживания и приоритетов.",
         "Понятный интерфейс для клиентов и персонала.",
         "Интеграция с информационными и платёжными сервисами.",
-        "Статистика и аналитика по загруженности точек обслуживания.",
+        "Статистика и аналитика по загруженности точек обслуживания."
       ],
       slides: [
         {
           image: "assets/qms/syo_19_saga_front.jpg",
           title: "Системы управления очередью",
-          subtitle: "Диагональ 19″",
+          subtitle: "19″ вертикальная ориентация"
+        },
+        {
+          image: "assets/qms/syo_19_saga_front_2.jpg",
+          title: "Системы управления очередью",
+          subtitle: "19″ горизонтальная ориентация"
         },
         {
           image: "assets/qms/syo_21_saga_front.jpg",
           title: "Системы управления очередью",
-          subtitle: "Диагональ 21″",
+          subtitle: "21″ вертикальная ориентация"
+        },
+        {
+          image: "assets/qms/syo_21_saga_front_2.jpg",
+          title: "Системы управления очередью",
+          subtitle: "21″ горизонтальная ориентация"
         },
         {
           image: "assets/qms/syo_27_saga_front.jpg",
           title: "Системы управления очередью",
-          subtitle: "Диагональ 27″",
+          subtitle: "27″ вертикальная ориентация"
         },
         {
           image: "assets/qms/syo_32_saga_front.jpg",
           title: "Системы управления очередью",
-          subtitle: "Диагональ 32″",
-        },
+          subtitle: "32″ вертикальная ориентация"
+        }
       ],
       link: "https://sagacorporation.com/solutions/elektronnaya-ochered/",
-      booklet: "assets/booklets/qms_booklet.pdf",
+      booklet: "assets/booklets/qms_booklet.pdf"
     },
     selfcheckout: {
       title: "Кассы самообслуживания SAGA",
@@ -138,22 +153,23 @@ document.addEventListener("DOMContentLoaded", () => {
         "Поддержка различных сценариев оплаты и скидок.",
         "Интеграция с существующими POS и учётными системами.",
         "Удобный интерфейс для покупателей и персонала.",
-        "Увеличение пропускной способности торговых точек.",
+        "Увеличение пропускной способности торговых точек."
       ],
       slides: [
         {
           image: "assets/ssc/ssc_21_front_2.jpg",
           title: "Кассы самообслуживания SAGA",
-          subtitle: "Диагональ 21″",
-        },
+          subtitle: "Диагональ 21″"
+        }
       ],
       link: "https://sagacorporation.com/products/kassy-samoobsluzhivaniya/",
-      booklet: "assets/booklets/ssc_booklet.pdf",
-    },
+      booklet: "assets/booklets/ssc_booklet.pdf"
+    }
   };
 
   function resetCarouselState() {
     if (!carouselTrack) return;
+
     clearInterval(carouselTimer);
     carouselTimer = null;
     carouselIndex = 0;
@@ -163,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     carouselDeltaX = 0;
     carouselTrack.style.transform = "translateX(0)";
     carouselTrack.innerHTML = "";
+
     if (carouselProgress) {
       carouselProgress.style.transition = "none";
       carouselProgress.style.width = "0%";
@@ -171,8 +188,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function startCarouselProgress() {
     if (!carouselProgress) return;
+
     carouselProgress.style.transition = "none";
     carouselProgress.style.width = "0%";
+
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         carouselProgress.style.transition = `width ${CAROUSEL_INTERVAL}ms linear`;
@@ -183,37 +202,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateCarousel() {
     if (!carouselTrack || !carouselImages.length) return;
+
     carouselTrack.style.transform = `translateX(-${carouselIndex * 100}%)`;
     startCarouselProgress();
   }
 
   function startCarouselAuto() {
     clearInterval(carouselTimer);
+
     if (!carouselImages.length || carouselImages.length === 1) {
       startCarouselProgress();
       return;
     }
+
     startCarouselProgress();
+
     carouselTimer = setInterval(() => {
       carouselIndex = (carouselIndex + 1) % carouselImages.length;
       updateCarousel();
     }, CAROUSEL_INTERVAL);
   }
 
-  function setupCarousel(images, title) {
+  function setupCarousel(images, title, startIndex = 0) {
     if (!carouselTrack || !images || !images.length) return;
+
     resetCarouselState();
     carouselImages = images.slice();
+
     images.forEach((src) => {
       const slide = document.createElement("div");
       slide.className = "modal-carousel-slide";
+
       const img = document.createElement("img");
       img.src = src;
       img.alt = title || "";
+
+      img.addEventListener("click", () => {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.src = src;
+        lightboxImg.alt = title || "";
+        lightbox.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+      });
+
       slide.appendChild(img);
       carouselTrack.appendChild(slide);
     });
-    carouselIndex = 0;
+
+    carouselIndex = Math.max(0, Math.min(startIndex, images.length - 1));
     updateCarousel();
     startCarouselAuto();
   }
@@ -233,14 +269,73 @@ document.addEventListener("DOMContentLoaded", () => {
     startCarouselAuto();
   }
 
+  function openProductModal(kind, startIndex = 0) {
+    const config = productConfig[kind];
+    if (!config || !modal) return;
+
+    if (modalTitle) modalTitle.textContent = config.title || "";
+    if (modalLead) modalLead.textContent = config.lead || "";
+
+    if (modalList) {
+      modalList.innerHTML = "";
+      (config.bullets || []).forEach((text) => {
+        const li = document.createElement("li");
+        li.textContent = text;
+        modalList.appendChild(li);
+      });
+    }
+
+    if (modalLink) modalLink.href = config.link || "#";
+    if (modalBooklet) modalBooklet.href = config.booklet || "#";
+
+    setupCarousel(
+      (config.slides || []).map((slide) => slide.image),
+      config.title,
+      startIndex
+    );
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeProductModal() {
+    if (!modal) return;
+
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    resetCarouselState();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+
+    if (lightboxImg) {
+      lightboxImg.src = "";
+      lightboxImg.alt = "";
+    }
+
+    if (modal && modal.classList.contains("is-open")) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }
+
   if (carouselTrack) {
     carouselTrack.addEventListener("pointerdown", (e) => {
       if (!carouselImages.length) return;
+
       carouselPointerId = e.pointerId;
       carouselStartX = e.clientX;
       carouselDeltaX = 0;
       carouselTrack.setPointerCapture(carouselPointerId);
       clearInterval(carouselTimer);
+
       if (carouselProgress) {
         carouselProgress.style.transition = "none";
       }
@@ -253,6 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const finishSwipe = (e) => {
       if (carouselPointerId === null || e.pointerId !== carouselPointerId) return;
+
       const delta = carouselDeltaX;
       carouselTrack.releasePointerCapture(carouselPointerId);
       carouselPointerId = null;
@@ -264,6 +360,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           goToPrevSlide();
         }
+      } else {
+        updateCarousel();
+        startCarouselAuto();
       }
     };
 
@@ -285,38 +384,92 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function initProductCarousel(root, slides) {
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener("click", closeProductModal);
+  }
+
+  if (modalCloseButtons) {
+    modalCloseButtons.forEach((btn) => {
+      btn.addEventListener("click", closeProductModal);
+    });
+  }
+
+  if (lightboxBackdrop) {
+    lightboxBackdrop.addEventListener("click", closeLightbox);
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (lightbox && lightbox.classList.contains("is-open")) {
+        closeLightbox();
+        return;
+      }
+
+      if (modal && modal.classList.contains("is-open")) {
+        closeProductModal();
+      }
+    }
+
+    if (modal && modal.classList.contains("is-open")) {
+      if (e.key === "ArrowLeft") {
+        goToPrevSlide();
+      }
+
+      if (e.key === "ArrowRight") {
+        goToNextSlide();
+      }
+    }
+  });
+
+  function initProductCarousel(root, kind, slides) {
     const track = root.querySelector("[data-product-carousel-track]");
-    const progress = root.querySelector("[data-product-carousel-progress]");
-    const prev = root.querySelector('[data-carousel-control="prev"]');
-    const next = root.querySelector('[data-carousel-control="next"]');
+    const progressBar = root.querySelector("[data-product-carousel-progress]");
+    const prevBtn = root.querySelector('[data-carousel-control="prev"]');
+    const nextBtn = root.querySelector('[data-carousel-control="next"]');
+    const openButtons = document.querySelectorAll(`[data-open-product="${kind}"]`);
+
     if (!track || !slides || !slides.length) return;
 
     let index = 0;
+    let timer = null;
+    let pointerId = null;
+    let startX = 0;
+    let deltaX = 0;
 
     track.innerHTML = "";
-    slides.forEach((item) => {
+
+    slides.forEach((item, slideIndex) => {
       const slide = document.createElement("div");
       slide.className = "product-carousel-slide";
+
       const img = document.createElement("img");
       img.src = item.image;
-      img.alt = item.alt || "";
-      slide.appendChild(img);
+      img.alt = item.alt || item.title || "";
 
       const overlay = document.createElement("div");
       overlay.className = "product-carousel-overlay";
+
       const overlayInner = document.createElement("div");
       overlayInner.className = "product-carousel-overlay-inner";
+
       const tag = document.createElement("div");
       tag.className = "product-carousel-tag";
       tag.textContent = item.tag || item.title || "";
+
       const title = document.createElement("div");
       title.className = "product-carousel-title";
       title.textContent = item.subtitle || "";
+
       overlayInner.appendChild(tag);
       overlayInner.appendChild(title);
       overlay.appendChild(overlayInner);
+
+      slide.appendChild(img);
       slide.appendChild(overlay);
+
+      slide.addEventListener("click", () => {
+        openProductModal(kind, slideIndex);
+      });
 
       track.appendChild(slide);
     });
@@ -325,50 +478,63 @@ document.addEventListener("DOMContentLoaded", () => {
       track.querySelectorAll(".product-carousel-slide")
     );
 
-    const update = () => {
-      track.style.transform = `translateX(-${index * 100}%)`;
+    const paint = () => {
       slidesEls.forEach((el, i) => {
-        if (i === index) {
-          el.classList.add("is-active");
-        } else {
-          el.classList.remove("is-active");
-        }
+        el.classList.toggle("is-active", i === index);
       });
+
+      if (progressBar) {
+        progressBar.style.width = `${((index + 1) / slides.length) * 100}%`;
+      }
     };
 
     const goPrev = () => {
       index = (index - 1 + slides.length) % slides.length;
-      update();
+      paint();
     };
 
     const goNext = () => {
       index = (index + 1) % slides.length;
-      update();
+      paint();
     };
 
-    if (prev) {
-      prev.addEventListener("click", (e) => {
+    const restartAuto = () => {
+      clearInterval(timer);
+
+      if (slides.length > 1) {
+        timer = setInterval(goNext, PRODUCT_INTERVAL);
+      }
+    };
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         goPrev();
+        restartAuto();
       });
     }
 
-    if (next) {
-      next.addEventListener("click", (e) => {
+    if (nextBtn) {
+      nextBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         goNext();
+        restartAuto();
       });
     }
 
-    let pointerId = null;
-    let startX = 0;
-    let deltaX = 0;
+    openButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        openProductModal(kind, index);
+      });
+    });
 
     track.addEventListener("pointerdown", (e) => {
       pointerId = e.pointerId;
       startX = e.clientX;
       deltaX = 0;
       track.setPointerCapture(pointerId);
+      clearInterval(timer);
     });
 
     track.addEventListener("pointermove", (e) => {
@@ -378,6 +544,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const finishSwipe = (e) => {
       if (pointerId === null || e.pointerId !== pointerId) return;
+
       const delta = deltaX;
       track.releasePointerCapture(pointerId);
       pointerId = null;
@@ -389,21 +556,26 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           goPrev();
         }
-      } else {
-        update();
       }
+
+      restartAuto();
     };
 
     track.addEventListener("pointerup", finishSwipe);
     track.addEventListener("pointercancel", finishSwipe);
 
-    update();
+    root.addEventListener("mouseenter", () => clearInterval(timer));
+    root.addEventListener("mouseleave", restartAuto);
+
+    paint();
+    restartAuto();
   }
 
   const productCarousels = document.querySelectorAll("[data-product-carousel]");
+
   productCarousels.forEach((root) => {
     const kind = root.getAttribute("data-product-carousel");
     if (!kind || !productConfig[kind] || !productConfig[kind].slides) return;
-    initProductCarousel(root, productConfig[kind].slides);
+    initProductCarousel(root, kind, productConfig[kind].slides);
   });
 });
